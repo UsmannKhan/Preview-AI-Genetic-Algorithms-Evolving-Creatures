@@ -14,6 +14,12 @@ Built a Python genetic algorithm (PyBullet physics) to evolve articulated creatu
 
 ---
 
+## Code access
+
+Source code, technical report, and recorded demos live in a private repository to respect University of London academic integrity guidelines, since the assignment brief is reused across cohorts. Happy to share full access with recruiters or hiring managers on request.
+
+---
+
 ![One of the evolved creatures attempting the climb](./creature-on-mountain.png)
 
 *An evolved creature in the sandboxed PyBullet environment. The Gaussian mountain sits in the middle; the creature's job is to climb it without exploiting the physics or the reward function.*
@@ -49,29 +55,9 @@ So I switched paradigms. Fixed-body experiments, evolving only motor controls. S
 
 That produced the project's best results: a fixed quadruped that reliably approached the mountain base and made repeated clumsy attempts at the slope. Still no successful climb.
 
-## Results
-
-No creature climbed to the peak. The best run produced reliable approach and partial ascent.
-
-That's a failed project on its face, and I think it's the most informative part of the work.
-
-A reasonable amount of search couldn't solve the task with the architecture I had, which tells you something concrete about how hard sparse-reward control is for a GA that has no built-in notion of slope, traction, or gait. The creature gets no signal that it's starting to climb until it's already elevated.
-
-And the exploit sequence is the lesson. Reward hacking and specification gaming aren't abstract problems; they turn up immediately in any system trained against a proxy objective, and getting bitten by them in a toy version is a good way to learn what to watch for in something bigger.
-
-## What I'd do differently
-
-With more time: curriculum learning to make the reward gradient denser, simple sensory input feeding into motor control (the creatures currently navigate blind), and reward shaping based on actually touching the mountain rather than geometric distance to it.
-
 ## Stack
 
 Python 3.8+, PyBullet (DIRECT mode for training, GUI for elite replay), NumPy. Custom experiment logger writing per-generation CSVs, periodic elite checkpointing, URDF serialization for evolved creatures.
-
----
-
-## Code access
-
-Source code, technical report, and recorded demos live in a private repository to respect University of London academic integrity guidelines, since the assignment brief is reused across cohorts. Happy to share full access with recruiters or hiring managers on request.
 
 ---
 
